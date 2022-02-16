@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+        <!-- Here is the Vue App -->
+      
+        <router-link to="/">Home</router-link> <br>
+        <router-link to="/pokedex">Pokedex</router-link> <br>
+        <router-link to="/calculator">Calculator</router-link> <br>
+        <router-link to="/guesser">Guesser</router-link> <br>
+        <router-link to="/game">Game</router-link> <br>
+
+
+        <router-view />
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
