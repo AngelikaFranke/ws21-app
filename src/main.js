@@ -10,6 +10,7 @@ import Calculator from './pages/Calculator.vue'
 import Pokedex from './pages/Pokedex.vue'
 import Guesser from './pages/Guesser.vue'
 import Game from './Game.vue'
+import App from './App.vue'
 import { createStore } from 'vuex';
 
 // Create a new store instance
@@ -125,6 +126,7 @@ const router = createRouter({
     { path: '/calculator', component: Calculator },
     { path: '/guesser', component: Guesser },
     { path: '/game', component: Game },
+    { path: '/app', component: App },
   ],
 })
 
