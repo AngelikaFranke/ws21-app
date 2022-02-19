@@ -11,6 +11,7 @@ import Pokedex from './pages/Pokedex.vue'
 import Guesser from './pages/Guesser.vue'
 import Game from './Game.vue'
 import App from './App.vue'
+import Game2 from './Game2.vue'
 import { createStore } from 'vuex';
 
 // Create a new store instance
@@ -127,6 +128,7 @@ const router = createRouter({
     { path: '/guesser', component: Guesser },
     { path: '/game', component: Game },
     { path: '/app', component: App },
+    { path: '/game2', component: Game2 },
   ],
 })
 
