@@ -50,8 +50,10 @@
 
 <script>
 import {ref} from "vue";
-import axios from "axios";
 import swal from "sweetalert";
+import axios from "axios";
+
+//const API = 'https://deckofcardsapi.com/api/deck/new/shuffle/'
 
 function translateCards(value){
     switch (value) {
@@ -184,7 +186,8 @@ export default {
             startPlayerTwo,
             playerTwo,
             winsPlayerOne,
-            winsPlayerTwo }; 
+            winsPlayerTwo,
+            axios }; 
     },
 
 };
