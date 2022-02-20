@@ -120,20 +120,20 @@ export default {
 
 <div class="grid grid-cols-5 gap-5">
     <button
-      @click="addNumber('+')" class="bg-indigo-300 text-lg">+</button>
+      @click="addNumber('+')" class="bg-indigo-300 text-lg hover:bg-indigo-200">+</button>
     <!-- Room for other operations -->
 
     <button 
-    @click="addNumber('-')"  class="bg-indigo-300 text-lg">-</button>
+    @click="addNumber('-')"  class="bg-indigo-300 text-lg hover:bg-indigo-200">-</button>
 
     <button 
-    @click="addNumber('*')"  class="bg-indigo-300 text-lg">*</button>
+    @click="addNumber('*')"  class="bg-indigo-300 text-lg hover:bg-indigo-200">*</button>
 
     <button 
-    @click="addNumber('/')"  class="bg-indigo-300 text-lg">/</button>
+    @click="addNumber('/')"  class="bg-indigo-300 text-lg hover:bg-indigo-200">/</button>
 
     <button 
-    class = "bg-indigo-300 text-lg" 
+    class = "bg-indigo-300 text-lg hover:bg-indigo-200" 
     @click="clearOutput">C</button>
 
 </div>
@@ -141,7 +141,7 @@ export default {
     <br />
 
     <button 
-    class = "w-1/2 bg-indigo-300 text-xl" 
+    class = "w-1/2 bg-indigo-300 text-xl hover:bg-indigo-200" 
     @click="showResult">=</button>
 
 </div>
