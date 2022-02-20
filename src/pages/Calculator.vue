@@ -58,8 +58,6 @@ export default {
         } else {
             this.result = 'error';
         }
-
-
       // if(this.operation === '+'){
       //   this.result = this.lastNumber + this.currentNumber;
       // } else if (this.operation === '-'){
@@ -87,9 +85,7 @@ export default {
   },
 
 };
-
 </script>
-
 
 <template>
 <div>
@@ -100,9 +96,9 @@ export default {
       <!-- <p>last stored number</p>
       <p class="displayNumber ">{{ lastNumber }}</p> -->
 
-      <p class="text-red-900 my-2">Display Number</p>
+      <p class="text-red-900 my-2 px-5">Display Number</p>
       <p class="displayNumber flex  bg-red-100 text-2xl px-5 py-2">{{ lastNumber }} {{operation}} {{ currentNumber }}</p>
-      <p class="text-red-900 my-2">Result</p>
+      <p class="text-red-900 my-2 px-5">Result</p>
       <strong class="display-result flex  text-red-900 text-2xl px-5 py-0">{{ result }} </strong>
 
     </div>
