@@ -9,18 +9,31 @@
   <body>
     <div id="app">
         <!-- Here is the Vue App -->
-      
-        <router-link to="/">Home</router-link> <br>
-        <router-link to="/pokedex">Pokedex</router-link> <br>
-        <router-link to="/calculator">Calculator</router-link> <br>
-        <router-link to="/guesser">Guesser</router-link> <br>
-        <router-link to="/game">Game</router-link> <br>
-        <router-link to="/app">App</router-link> <br>
-        <router-link to="/game2">Game2</router-link> <br>
+        <div class="flex content-center justify-center my-10 space-x-12">
+        <router-link to="/"  class="link">Home</router-link> <br>
+        <router-link to="/pokedex"  class="link">Pokedex</router-link> <br>
+        <router-link to="/calculator" class="link">Calculator</router-link> <br>
+        <router-link to="/guesser" class="link">Guesser</router-link> <br>
+        <router-link to="/game2"  class="link">Game</router-link> <br>
 
+        </div>
+
+        <!-- <router-link to="/game">Game</router-link> <br>
+        <router-link to="/app">App</router-link> <br> -->
 
         <router-view />
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
+
+<!-- <div class="flex content-center justify-center my-10 space-x-12">
+
+  <router-link to="/" class="link">Home</router-link> <br>
+  <router-link to="/pokedex" class="link">Pokedex</router-link> <br>
+  <router-link to="/calculator" class="link">Calculator</router-link> <br>
+  <router-link to="/guesser" class="link">Guesser</router-link> <br>
+  <router-link to="/game" class="link">Game</router-link> <br>
+</div>
+  <router-view /> -->
