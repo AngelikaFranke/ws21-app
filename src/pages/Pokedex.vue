@@ -43,7 +43,7 @@ export default {
 
 <ul>
 
-<div class = "flex flex-wrap">   
+<div class = "grid grid-cols-12 gap-2 mt-10">   
     <li v-for="(item, index) in list" :key="index">
         <div class="text-center p-2">
         <div class ="flex
