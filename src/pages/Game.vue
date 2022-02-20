@@ -50,8 +50,8 @@
 
 <script>
 import {ref} from "vue";
-import {axios} from "vue";
-import {swal} from "vue";
+import axios from "axios";
+import swal from "sweetalert";
 
 
 //const API = 'https://deckofcardsapi.com/api/deck/new/shuffle/'
