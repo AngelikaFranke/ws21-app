@@ -48,7 +48,7 @@ export default {
         <div class="text-center p-2">
         <div class ="flex
             bg-gray-100
-            hover:bg-green-100
+            hover:bg-blue-200
             rounded-md
             hover:shadow-xl
             transition-shadow

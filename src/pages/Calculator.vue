@@ -87,9 +87,9 @@ export default {
       <!-- <p>last stored number</p>
       <p class="displayNumber ">{{ lastNumber }}</p> -->
 
-      <p class="text-red-900 my-2">Display Number</p>
+      <p class="text-red-900 my-2 px-2">Display Number</p>
       <p class="displayNumber flex  bg-red-100 text-2xl px-5 py-2">{{ lastNumber }} {{operation}} {{ currentNumber }}</p>
-      <p class="text-red-900 my-2">Result</p>
+      <p class="text-red-900 my-2 px-2">Result</p>
       <strong class="display-result flex  text-red-900 text-2xl px-5 py-0">{{ result }} </strong>
 
     </div>
@@ -97,7 +97,7 @@ export default {
     </div>
 
 <div class="grid grid-cols-4 gap-4 mt-10" >
-    <button class="bg-indigo-200 hover:bg-indigo-100"
+    <button class="bg-indigo-200 hover:bg-indigo-100 text-base"
       v-for="number in numberKeys"
       @click="pushNumber(number)"
       :key="number"
@@ -111,20 +111,20 @@ export default {
 
 <div class="grid grid-cols-5 gap-5">
     <button
-      @click="addNumber('+')" class="bg-indigo-300 text-lg">+</button>
+      @click="addNumber('+')" class="flex content-center justify-center bg-indigo-300 text-xl">+</button>
     <!-- Room for other operations -->
 
     <button 
-    @click="addNumber('-')"  class="bg-indigo-300 text-lg">-</button>
+    @click="addNumber('-')"  class="flex content-center justify-center bg-indigo-300 text-xl">-</button>
 
     <button 
-    @click="addNumber('*')"  class="bg-indigo-300 text-lg">*</button>
+    @click="addNumber('*')"  class="flex content-center justify-center bg-indigo-300 text-xl">*</button>
 
     <button 
-    @click="addNumber('/')"  class="bg-indigo-300 text-lg">/</button>
+    @click="addNumber('/')"  class="flex content-center justify-center bg-indigo-300 text-xl">/</button>
 
     <button 
-    class = "bg-indigo-300 text-lg" 
+    class = "flex content-center justify-center bg-indigo-300 text-xl" 
     @click="clearOutput">C</button>
 
 </div>

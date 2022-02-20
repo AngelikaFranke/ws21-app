@@ -15,16 +15,16 @@ export default {
 
 
     <div class="flex content-center justify-center">
-    <button @click="getDeck">Get a new Deck</button>
+    <button @click="getDeck" class="text-base">Get a new Deck</button>
     </div>
 <div class="flex content-center justify-center my-5">
     <div v-if="guesser.deckId">
         <div class="flex content-center justify-center">
-        <button @click="setNextGuess('red')" class="bg-red-500 hover:bg-red-400 text-white">Guess Red</button>
+        <button @click="setNextGuess('red')" class="bg-red-500 hover:bg-red-400 text-white text-base">Guess Red</button>
         <br />
-        <button @click="setNextGuess('black')" class="bg-gray-900 hover:bg-gray-800 text-white">Guess Black</button>
+        <button @click="setNextGuess('black')" class="bg-gray-900 hover:bg-gray-700 text-white text-base">Guess Black</button>
         <br />
-        <button v-if="guesser.nextGuess" @click="drawCard">Draw a card</button>
+        <button v-if="guesser.nextGuess" @click="drawCard" class="text-base">Draw a card</button>
         </div>
 
     <div class="flex content-center justify-center">

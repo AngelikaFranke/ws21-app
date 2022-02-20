@@ -33,7 +33,7 @@ h1 {
 button {
     @apply           
     p-5 
-    text-xs
+    text-base
     space-x-4
     bg-green
     hover:bg-lightgreen

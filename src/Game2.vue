@@ -4,14 +4,14 @@
 <div  class="flex content-center justify-center">
     <p>Explanation: Get as close as possible to 21 without scoring more points. 
         If you cross 21 you automatically lose. <br> 
-        If you don't want to draw new cards click "hit it" and the second player, tries to 
+        If you don't want to draw new cards click "Stick" and the second player, tries to 
         get more points than you while staying under 21. <br>
     </p>
 
 </div>
 
     <div class="flex content-center justify-center m-5">
-    <button @click="getDeck()">Get a new Deck</button>
+    <button @click="getDeck()" class="text-base">Get a new Deck</button>
     </div>
 
     
@@ -22,11 +22,11 @@
 
 <div v-if ="!gameOver" id="gamePlayerOne">
     <div class ="flex content-center justify-center space-x-10">
-    <button v-if ="!startPlayerTwo" @click="getCards()">Player one draw a Card</button>
-    <button v-if ="!startPlayerTwo" @click="playerTwo">Stick</button>
+    <button v-if ="!startPlayerTwo" @click="getCards()" class="text-base">Player one draw a Card</button>
+    <button v-if ="!startPlayerTwo" @click="playerTwo" class="text-base">Stick</button>
 
             <div v-if="startPlayerTwo">
-                <button @click="getCards2()">Player Two draw a Card</button>
+                <button @click="getCards2()" class="text-base">Player Two draw a Card</button>
  
         </div>
     </div>
