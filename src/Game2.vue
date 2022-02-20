@@ -1,65 +1,53 @@
 <template>
 <h1>Blackjack</h1>
-<!-- <div v-if ="!gameOver" id="game">
-<div id="game">
-<div id="playerOne">
-    <h4>Player One</h4>
-    <div class="card">
-        <img :src="cardOne?.images?.png"/>
+
+<div  class="flex content-center justify-center">
+    <p>Explanation: Get as close as possible to 21 without scoring more points. 
+        If you cross 21 you automatically lose. <br> 
+        If you don't want to draw new cards click "hit it" and the second player, tries to 
+        get more points than you while staying under 21. <br>
+    </p>
+
+</div>
+
+    <div class="flex content-center justify-center m-5">
+    <button @click="getDeck()">Get a new Deck</button>
     </div>
 
-    <div class="score">Show Score Player One: {{ scoreOne }}</div>
-
-    <button @click="getCards()">Draw Cards
-        <div>
-            <img :src="cardTwo?.images?.png"/>
-        </div>
-    </button>
-
-    <button @click="getCards2()">Hit it</button>
-
-        <div class="score">Show Score Player Two: {{ scoreTwo }}</div>
-
-    <div v-if="gameOver">
-    <button @click="getDeck()">Play Game</button>
-</div>
-</div>
-
-</div> -->
+    
+    <div class ="flex content-center justify-center m-5 space-x-10">
+        <div class="text-lg text-red-900">Wins Player One: {{winsPlayerOne}}</div>
+        <div  class="text-lg text-red-900">Wins Player Two: {{winsPlayerTwo}}</div>
+    </div>
 
 <div v-if ="!gameOver" id="gamePlayerOne">
+    <div class ="flex content-center justify-center space-x-10">
     <button v-if ="!startPlayerTwo" @click="getCards()">Player one draw a Card</button>
     <button v-if ="!startPlayerTwo" @click="playerTwo">Hit It</button>
-    <div v-if="startPlayerOne">
-            <img :src="cardOne?.images?.png"/>
-    <div class="score">Score Player One: {{ scoreOne }}</div>
 
-    <div id="gamePlayerTwo">
-        <div v-if="startPlayerTwo">
-                <img :src="cardTwo?.images?.png"/>
-            <div class="score">Score Player Two: {{ scoreTwo }}</div>
+            <div v-if="startPlayerTwo">
                 <button @click="getCards2()">Player Two draw a Card</button>
+ 
         </div>
     </div>
-
+    <div class ="flex content-center justify-center my-10">
+    
+    <div v-if="startPlayerOne" class="mx-10">
+            <img :src="cardOne?.images?.png" />
+                <div class="my-5">Score Player One: {{ scoreOne }}</div>
+    </div>
+    <div v-if="startPlayerTwo" class="mx-10">
+            <img :src="cardTwo?.images?.png" />  
+                    <div class="my-5">Score Player Two: {{ scoreTwo }}</div>
+    </div> 
     </div>
 </div>
-
-<button @click="getDeck()">Get a new Deck</button>
-
-<div class ="winsAndLosses">
-    <div>Wins Player One: {{winsPlayerOne}}</div>
-    <div>Wins Player Two: {{winsPlayerTwo}}</div>
-</div>
-
 </template>
-
-
 <script>
 import {ref} from "vue";
 import axios from "axios";
 import swal from "sweetalert";
-
+//const API = 'https://deckofcardsapi.com/api/deck/new/shuffle/'
 function translateCards(value){
     switch (value) {
         case "JACK":
@@ -73,20 +61,14 @@ function translateCards(value){
         case "KING":
             value = "13";
             break;
-
         case "ACE":
             value = "14";
             break;
-
             default:
                 break;
     }
     return value;
 }
-
-//let winsPlayerOne = 0;
-//let winsPlayerTwo = 0;
-
 export default {
     name: "App",
     setup() {
@@ -100,12 +82,10 @@ export default {
         winsPlayerTwo = ref(0),
         scoreOne = ref(0),
         scoreTwo = ref(0);
-
         console.log(
             winsPlayerOne,
             winsPlayerTwo
         );
-
         async function getDeck(){
             gameOver.value = false;
             startPlayerOne.value = false;
@@ -130,7 +110,6 @@ export default {
             const valueCard = parseInt(translateCards(cardOne.value.value));
             scoreOne.value = scoreOne.value + valueCard;
             console.log(scoreOne.value)
-
             if(scoreOne.value > 21) {
                 setTimeout(() => {
                     swal("Player Two wins!")
@@ -143,7 +122,6 @@ export default {
         async function playerTwo(){
             startPlayerTwo.value = true;
         }
-
         async function getCards2(){
             const {data} = await axios.get(
                 'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
@@ -155,15 +133,6 @@ export default {
             const valueCard = parseInt(translateCards(cardTwo.value.value));
             scoreTwo.value = scoreTwo.value + valueCard;
             console.log(scoreTwo.value)
-
-  
-            // if(scoreTwo.value > 21) {
-            //     gameOver.value = true;
-            //     //scoreTwo.value = 0;
-            //       swal("Player One wins!")
-                  
-            // }
-
             if(scoreTwo.value > 21) {
                 setTimeout(() => {
                     swal("Player One wins!")
@@ -171,7 +140,6 @@ export default {
                     winsPlayerOne.value = winsPlayerOne.value + 1;
                 }, 500);
             }
-
             if(scoreTwo.value > scoreOne.value && scoreTwo.value < 22) {
                 setTimeout(() => {
                     swal("Player Two wins!")
@@ -179,41 +147,13 @@ export default {
                     winsPlayerTwo.value = winsPlayerTwo.value + 1;
                 }, 500);
             }
-
             if(scoreTwo.value > 15 && scoreTwo.value == scoreOne.value) {
                 setTimeout(() => {
                     swal("Draw!")
                     gameOver.value = true;
                 }, 500);
             }
-
-            // if(scoreTwo.value > scoreOne.value && scoreTwo.value < 22) {
-            //     gameOver.value = true;
-            //       swal("Player Two wins!")
-            // }
-
-            // if(scoreTwo.value > 15 && scoreTwo.value == scoreOne.value) {
-            //     gameOver.value = true;
-            //       swal("Draw!")
-            // }
         }
-
-        function gameOverTest(){
-            
-            if(scoreOne.value > 21) {
-                gameOver.value = true;
-                scoreOne.value = 0;
-            }
-            if(scoreTwo.value > 21) {
-                gameOver.value = true;
-                scoreTwo.value = 0;
-            }
-            if(scoreTwo.value > scoreOne.value) {
-
-            }
-
-        }
-
         return { 
             getCards, 
             cardOne, 
@@ -227,15 +167,8 @@ export default {
             startPlayerTwo,
             playerTwo,
             winsPlayerOne,
-            winsPlayerTwo }; 
+            winsPlayerTwo,
+            axios }; 
     },
-
 };
-
-
-
 </script>
-
-<style scoped>
-
-</style>

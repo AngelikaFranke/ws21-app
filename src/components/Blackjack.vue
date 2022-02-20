@@ -174,7 +174,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .main {
   justify-content: center;
   align-items: center;
