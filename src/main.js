@@ -9,7 +9,7 @@ import Home from './pages/Home.vue'
 import Calculator from './pages/Calculator.vue'
 import Pokedex from './pages/Pokedex.vue'
 import Guesser from './pages/Guesser.vue'
-import Game from './pages/Game.vue'
+import Game from './Game.vue'
 import { createStore } from 'vuex';
 
 // Create a new store instance
