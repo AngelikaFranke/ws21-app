@@ -1,5 +1,5 @@
 Welcome on my ATJS Repository
-Pleas only use the master branch for grading!
+Please only use the master branch for grading!
 
 # Vue 3 + Vite
 
