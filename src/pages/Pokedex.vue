@@ -47,8 +47,8 @@ export default {
     <li v-for="(item, index) in list" :key="index">
         <div class="text-center p-2">
         <div class ="flex
-            bg-gray-100
-            hover:bg-green-100
+            bg-blue-50
+            hover:bg-blue-100
             rounded-md
             hover:shadow-xl
             transition-shadow
