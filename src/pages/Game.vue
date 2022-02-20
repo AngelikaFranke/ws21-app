@@ -23,7 +23,7 @@
 <div v-if ="!gameOver" id="gamePlayerOne">
     <div class ="flex content-center justify-center space-x-10">
     <button v-if ="!startPlayerTwo" @click="getCards()">Player one draw a Card</button>
-    <button v-if ="!startPlayerTwo" @click="playerTwo">Hit It</button>
+    <button v-if ="!startPlayerTwo" @click="playerTwo">Stick</button>
 
             <div v-if="startPlayerTwo">
                 <button @click="getCards2()">Player Two draw a Card</button>
