@@ -52,7 +52,8 @@ export default {
             rounded-md
             hover:shadow-xl
             transition-shadow
-            duration-1000">
+            duration-1000 
+            justify-center">
 
         <img 
         :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
