@@ -4,7 +4,7 @@
 <div  class="flex content-center justify-center">
     <p>Explanation: Get as close as possible to 21 without scoring more points. 
         If you cross 21 you automatically lose. <br> 
-        If you don't want to draw new cards click "hit it" and the second player, tries to 
+        If you don't want to draw new cards click "Stick" and the second player, tries to 
         get more points than you while staying under 21. <br>
     </p>
 
