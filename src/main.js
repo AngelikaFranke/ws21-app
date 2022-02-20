@@ -11,6 +11,8 @@ import Pokedex from './pages/Pokedex.vue'
 import Guesser from './pages/Guesser.vue'
 import Game from './pages/Game.vue'
 import { createStore } from 'vuex';
+import swal from "sweetalert";
+import axios from "axios";
 
 // Create a new store instance
 const API = 'https://deckofcardsapi.com/api/deck/new/shuffle/';
