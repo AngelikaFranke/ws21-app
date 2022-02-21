@@ -16,30 +16,26 @@
 
     
     <div class ="flex content-center justify-center m-5 space-x-10">
-        <div class="text-lg text-red-900">Wins Player One: {{winsPlayerOne}}</div>
-        <div  class="text-lg text-red-900">Wins Player Two: {{winsPlayerTwo}}</div>
+        <div class="text-lg text-red-900">Wins Player: {{winsPlayerOne}}</div>
+        <div  class="text-lg text-red-900">Wins Dealer: {{winsPlayerTwo}}</div>
     </div>
 
 <div v-if ="!gameOver" id="gamePlayerOne">
     <div class ="flex content-center justify-center space-x-10">
-    <button v-if ="!startPlayerTwo" @click="getCards()">Player one draw a Card</button>
-    <button v-if ="!startPlayerTwo" @click="playerTwo">Stick</button>
+    <button v-if ="!startPlayerTwo" @click="getCards()">Draw a Card</button>
+    <button v-if ="!startPlayerTwo" @click="myLoop()">Stick</button>
 
-            <div v-if="startPlayerTwo">
-                <button @click="getCards2()">Player Two draw a Card</button>
- 
-        </div>
     </div>
     <div class ="flex content-center justify-center my-10">
     
     <div v-if="startPlayerOne" class="mx-10">
             <img :src="cardOne?.images?.png" />
-                <div class="my-5">Score Player One: {{ scoreOne }}</div>
+                <div class="my-5">Score Player: {{ scoreOne }}</div>
     </div>
 
     <div v-if="startPlayerTwo" class="mx-10">
             <img :src="cardTwo?.images?.png" />  
-                    <div class="my-5">Score Player Two: {{ scoreTwo }}</div>
+                <div class="my-5">Score Dealer: {{ scoreTwo }}</div>
     </div> 
 
     </div>
@@ -110,6 +106,8 @@ export default {
             console.log(data);
             scoreOne.value = 0;
             scoreTwo.value = 0;
+
+            i = 0;
         }
         async function getCards(){
             startPlayerOne.value = true;
@@ -126,7 +124,7 @@ export default {
 
             if(scoreOne.value > 21) {
                 setTimeout(() => {
-                    swal("Player Two wins!")
+                    swal("Dealer wins!")
                     gameOver.value = true;
                     winsPlayerTwo.value = winsPlayerTwo.value + 1;
                     console.log(winsPlayerTwo)
@@ -137,10 +135,44 @@ export default {
             startPlayerTwo.value = true;
         }
 
+        // for(let i = 0; i < 4; i++){
+        //     getCards2()
+        //     console.log(scoreTwo.value)
+        //     console.log(i)
+
+        // }
+        // for(let i = 0; i < 4; setTimeout(() =>{i++},500))
+        // {console.log(i)}
+
+
+let i = 0;                 
+
+ async function myLoop() {         
+  setTimeout(function() {   
+    console.log('hello');
+
+    i++;
+    console.log(i)   
+    if (i < 4) {           
+    myLoop();
+    getCards2(); 
+
+    }                      
+  }, 1000)
+}
+
+// myLoop(); 
+
         async function getCards2(){
+            startPlayerTwo.value = true;
+
+        setTimeout(() => {},500)
+            // for(let i = 0; i < 4; i++){
             const {data} = await axios.get(
                 'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
             );
+
+
             const remaining = data.remaining
             const { cards } = data;
             cardTwo.value = cards[0];
@@ -149,19 +181,22 @@ export default {
             scoreTwo.value = scoreTwo.value + valueCard;
             console.log(scoreTwo.value)
 
+
             if(scoreTwo.value > 21) {
-                setTimeout(() => {
-                    swal("Player One wins!")
+                setTimeout(()=> {
+                    swal("Player wins!")
                     gameOver.value = true;
                     winsPlayerOne.value = winsPlayerOne.value + 1;
-                }, 500);
+                    i = 5;
+                    }, 500);
             }
 
             if(scoreTwo.value > scoreOne.value && scoreTwo.value < 22) {
                 setTimeout(() => {
-                    swal("Player Two wins!")
+                    swal("Dealer wins!")
                     gameOver.value = true;
                     winsPlayerTwo.value = winsPlayerTwo.value + 1;
+                    i = 5;
                 }, 500);
             }
 
@@ -169,9 +204,9 @@ export default {
                 setTimeout(() => {
                     swal("Draw!")
                     gameOver.value = true;
+                    i = 5;
                 }, 500);
             }
-
         }
 
         return { 
@@ -188,7 +223,8 @@ export default {
             playerTwo,
             winsPlayerOne,
             winsPlayerTwo,
-            axios }; 
+            axios,
+            myLoop }; 
     },
 
 };
