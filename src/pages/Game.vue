@@ -153,7 +153,7 @@ let i = 0;
 
     i++;
     console.log(i)   
-    if (i < 4) {           
+    if (i < 10) {           
     myLoop();
     getCards2(); 
 
@@ -187,7 +187,7 @@ let i = 0;
                     swal("Player wins!")
                     gameOver.value = true;
                     winsPlayerOne.value = winsPlayerOne.value + 1;
-                    i = 5;
+                    i = 11;
                     }, 500);
             }
 
@@ -196,7 +196,7 @@ let i = 0;
                     swal("Dealer wins!")
                     gameOver.value = true;
                     winsPlayerTwo.value = winsPlayerTwo.value + 1;
-                    i = 5;
+                    i = 11;
                 }, 500);
             }
 
@@ -204,7 +204,7 @@ let i = 0;
                 setTimeout(() => {
                     swal("Draw!")
                     gameOver.value = true;
-                    i = 5;
+                    i = 11;
                 }, 500);
             }
         }

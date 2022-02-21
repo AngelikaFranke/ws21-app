@@ -15,12 +15,5 @@ o Guesser Game <br> <br>
 o Easy Version of a Black Jack Game</p>
 </div>
 
-    <!-- <ul  class="flex  flex-col text-lg">
-        <p class="flex justify-center">It contains:</p><br>
-        <li class="flex justify-center">Pokedex</li><br>
-        <li class="flex justify-center">Calculator</li><br>
-        <li class="flex justify-center">Guesser Game</li><br>
-        <li class="flex justify-center">Easy Version of a Black Jack Game</li><br>
-    </ul> -->
 
 </template>

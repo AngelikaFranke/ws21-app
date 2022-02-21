@@ -1,6 +1,5 @@
 <script>
 const numberKeys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-
 export default {
   data() {
     return {
@@ -11,7 +10,6 @@ export default {
       result: null
     };
   },
-
   computed: {
     currentNumber() {
       // We turn the array into a number so we don't need to convert
@@ -19,18 +17,15 @@ export default {
       return parseInt(this.currentNumberArray.join(""), 10) || 0;
     },
   },
-
   methods: {
     pushNumber(numberStr) {
       // Just add the last number to the array
       this.currentNumberArray.push(numberStr);
     },
-
     addNumber(operation) {
       // Store the currentNumber in memory of the lastNumber
       this.lastNumber = this.currentNumber;
       this.currentNumberArray = [];
-
       if(operation === '+'){
         this.operation = '+'
       }
@@ -44,9 +39,7 @@ export default {
         this.operation = '/'
       }
     },
-
     showResult() {
-
       if(this.operation === '+') {
             this.result = this.lastNumber + this.currentNumber;
         } else if (this.operation === '-') {
@@ -74,16 +67,13 @@ export default {
       //this.currentNumberArray = [...String(this.result)];
       // Logic here has a lot of room for improvements
     },
-
     clearOutput() {
         this.lastNumber = null;
         this.currentNumberArray = [];
         this.result = null;
         this.operation = ''
     },
-
   },
-
 };
 </script>
 
@@ -157,7 +147,6 @@ export default {
   height: 80px;
   margin-bottom: -1px;
 }
-
 .containerBox {
   width: 400px;
 	height: auto;
@@ -171,6 +160,4 @@ export default {
   -ms-user-select: none; 
   user-select: none;
 }
-
-
 </style>
