@@ -22,18 +22,21 @@
 
 <div v-if ="!gameOver" id="gamePlayerOne">
     <div class ="flex content-center justify-center space-x-10">
-    <button v-if ="!startPlayerTwo" @click="getCards()">Draw a Card</button>
+    <button v-if ="!startPlayerTwo" @click="getCardPlayerOne()">Draw a Card</button>
     <button v-if ="!startPlayerTwo" @click="myLoop()">Stick</button>
 
     </div>
     <div class ="flex content-center justify-center my-10">
     
-    <div v-if="startPlayerOne" class="mx-10">
+    <div 
+     class="mx-10">
             <img :src="cardOne?.images?.png" />
                 <div class="my-5">Score Player: {{ scoreOne }}</div>
     </div>
 
-    <div v-if="startPlayerTwo" class="mx-10">
+    <div 
+    v-if="startPlayerTwo"
+     class="mx-10">
             <img :src="cardTwo?.images?.png" />  
                 <div class="my-5">Score Dealer: {{ scoreTwo }}</div>
     </div> 
@@ -49,8 +52,6 @@ import {ref} from "vue";
 import axios from "axios";
 import swal from "sweetalert";
 
-
-//const API = 'https://deckofcardsapi.com/api/deck/new/shuffle/'
 
 function translateCards(value){
     switch (value) {
@@ -81,7 +82,7 @@ export default {
     setup() {
         let gameOver = ref(true);
         let startPlayerOne = ref(true);
-        let startPlayerTwo = ref(true),  
+        let startPlayerTwo = ref(true),
         cardOne = ref({}),
         cardTwo = ref({}),
         deckID = ref(null),
@@ -96,6 +97,7 @@ export default {
         );
 
         async function getDeck(){
+
             gameOver.value = false;
             startPlayerOne.value = false;
             startPlayerTwo.value = false;
@@ -109,19 +111,70 @@ export default {
 
             i = 0;
         }
-        async function getCards(){
-            startPlayerOne.value = true;
-            const {data} = await axios.get(
+
+        async function getCard(){
+                const {data} = await axios.get(
                 'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
             );
+            console.log(startPlayerOne.value)
+            console.log(startPlayerTwo.value)
             const remaining = data.remaining
             const { cards } = data;
-            cardOne.value = cards[0];
-            console.log(remaining)
-            const valueCard = parseInt(translateCards(cardOne.value.value));
-            scoreOne.value = scoreOne.value + valueCard;
-            console.log(scoreOne.value)
 
+            const valueCard = parseInt(translateCards(cards[0].value));
+            console.log(valueCard)
+            cardTwo.value = cards[0];
+
+            if(startPlayerOne.value = true && startPlayerTwo.value != true){
+                cardOne.value = cards[0];
+                scoreOne.value = scoreOne.value + valueCard;
+
+
+                } else {
+                //let test = cardOne
+                cardOne.value = cardOne.value
+                //cardOne.value = {cardOne}
+                //cardOne = {cardOne}
+                scoreTwo.value = scoreTwo.value + valueCard;
+
+                // const valueCardTwo = parseInt(translateCards(cardTwo.value.value));
+                // scoreTwo.value = scoreTwo.value + valueCardTwo;
+                // console.log(scoreTwo.value, 'scoreTwo')
+                // console.log(startPlayerTwo.value)
+
+                
+                }
+
+            // cardOne.value = cards[0];
+
+            // const valueCardOne = parseInt(translateCards(cardOne.value.value));
+            // scoreOne.value = scoreOne.value + valueCardOne;
+            // console.log(scoreOne.value)
+
+
+            // cardTwo.value = cards[0]
+            //     const valueCardTwo = parseInt(translateCards(cardTwo.value.value));
+            //     scoreTwo.value = scoreTwo.value + valueCardTwo;
+            //     console.log(scoreTwo.value, 'scoreTwo')
+            //     console.log(startPlayerTwo.value)
+
+            // } else if(startPlayerTwo.value = true){
+            //     cardTwo.value = cards[0];
+            // }
+                        
+            // if(startPlayerTwo.value = true){
+            //     cardTwo.value = cards[0]
+            //     console.log(startPlayerTwo.value)
+            // }
+
+            // cardOne.value = cards[0];
+            // console.log(remaining)
+            
+
+            winConditions()
+        }
+
+        function winConditions(){
             if(scoreOne.value > 21) {
                 setTimeout(() => {
                     swal("Dealer wins!")
@@ -130,57 +183,6 @@ export default {
                     console.log(winsPlayerTwo)
                 }, 500);
             }
-        }
-        async function playerTwo(){
-            startPlayerTwo.value = true;
-        }
-
-        // for(let i = 0; i < 4; i++){
-        //     getCards2()
-        //     console.log(scoreTwo.value)
-        //     console.log(i)
-
-        // }
-        // for(let i = 0; i < 4; setTimeout(() =>{i++},500))
-        // {console.log(i)}
-
-
-let i = 0;                 
-
- async function myLoop() {         
-  setTimeout(function() {   
-    console.log('hello');
-
-    i++;
-    console.log(i)   
-    if (i < 10) {           
-    myLoop();
-    getCards2(); 
-
-    }                      
-  }, 1000)
-}
-
-// myLoop(); 
-
-        async function getCards2(){
-            startPlayerTwo.value = true;
-
-        setTimeout(() => {},500)
-            // for(let i = 0; i < 4; i++){
-            const {data} = await axios.get(
-                'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
-            );
-
-
-            const remaining = data.remaining
-            const { cards } = data;
-            cardTwo.value = cards[0];
-            console.log(remaining)
-            const valueCard = parseInt(translateCards(cardTwo.value.value));
-            scoreTwo.value = scoreTwo.value + valueCard;
-            console.log(scoreTwo.value)
-
 
             if(scoreTwo.value > 21) {
                 setTimeout(()=> {
@@ -209,8 +211,131 @@ let i = 0;
             }
         }
 
+        async function getCardPlayerOne(){
+            startPlayerOne.value = true;      
+            getCard();
+            // const {cards} = data;
+            
+            // cardOne.value = cards[0];
+
+            // const valueCardOne = parseInt(translateCards(cardOne.value.value));
+            // console.log(cardOne.value.value)
+            // scoreOne.value = scoreOne.value + valueCardOne;
+            // console.log(scoreOne.value)
+        }
+
+        // async function getCardsTwo(){
+        //     startPlayerTwo.value = true;
+        //     getCard();
+        // }
+
+        // async function getCard(){
+        //     startPlayerOne.value = true;
+        //     const {data} = await axios.get(
+        //         'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
+        //     );
+        //     const remaining = data.remaining
+        //     const { cards } = data;
+        //     cardOne.value = cards[0];
+        //     console.log(remaining)
+        //     const valueCard = parseInt(translateCards(cardOne.value.value));
+        //     scoreOne.value = scoreOne.value + valueCard;
+        //     console.log(scoreOne.value)
+
+        //     if(scoreOne.value > 21) {
+        //         setTimeout(() => {
+        //             swal("Dealer wins!")
+        //             gameOver.value = true;
+        //             winsPlayerTwo.value = winsPlayerTwo.value + 1;
+        //             console.log(winsPlayerTwo)
+        //         }, 500);
+        //     }
+        // }
+
+        // async function playerTwo(){
+        //     startPlayerTwo.value = true;
+        // }
+
+        // for(let i = 0; i < 4; i++){
+        //     getCards2()
+        //     console.log(scoreTwo.value)
+        //     console.log(i)
+
+        // }
+        // for(let i = 0; i < 4; setTimeout(() =>{i++},500))
+        // {console.log(i)}
+
+
+let i = 0;                 
+
+ async function myLoop() {
+    // startPlayerOne.value = false;
+    startPlayerTwo.value = true;         
+  setTimeout(function() {   
+    console.log('hello');
+
+    i++;
+    console.log(i)   
+    if (i < 10) {           
+    myLoop();
+    getCard();
+    //getCards2(); 
+
+    }                      
+  }, 1000)
+}
+
+// myLoop(); 
+
+        async function getCards2(){
+            startPlayerTwo.value = true;
+
+        // setTimeout(() => {},500)
+        //     // for(let i = 0; i < 4; i++){
+        //     const {data} = await axios.get(
+        //         'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
+        //     );
+
+
+        //     const remaining = data.remaining
+        //     const { cards } = data;
+        //     cardTwo.value = cards[0];
+        //     console.log(remaining)
+        //     const valueCard = parseInt(translateCards(cardTwo.value.value));
+        //     scoreTwo.value = scoreTwo.value + valueCard;
+        //     console.log(scoreTwo.value)
+
+        //getCard();
+
+            // if(scoreTwo.value > 21) {
+            //     setTimeout(()=> {
+            //         swal("Player wins!")
+            //         gameOver.value = true;
+            //         winsPlayerOne.value = winsPlayerOne.value + 1;
+            //         i = 11;
+            //         }, 500);
+            // }
+
+            // if(scoreTwo.value > scoreOne.value && scoreTwo.value < 22) {
+            //     setTimeout(() => {
+            //         swal("Dealer wins!")
+            //         gameOver.value = true;
+            //         winsPlayerTwo.value = winsPlayerTwo.value + 1;
+            //         i = 11;
+            //     }, 500);
+            // }
+
+            // if(scoreTwo.value > 15 && scoreTwo.value == scoreOne.value) {
+            //     setTimeout(() => {
+            //         swal("Draw!")
+            //         gameOver.value = true;
+            //         i = 11;
+            //     }, 500);
+            // }
+        }
+
         return { 
-            getCards, 
+            // getCard, 
             cardOne, 
             gameOver, 
             getDeck,
@@ -220,11 +345,12 @@ let i = 0;
             getCards2,
             startPlayerOne,
             startPlayerTwo,
-            playerTwo,
+            // playerTwo,
             winsPlayerOne,
             winsPlayerTwo,
             axios,
-            myLoop }; 
+            myLoop,
+            getCardPlayerOne }; 
     },
 
 };
