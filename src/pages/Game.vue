@@ -131,48 +131,37 @@ export default {
 
 
                 } else {
-                //let test = cardOne
                 cardOne.value = cardOne.value
-                //cardOne.value = {cardOne}
-                //cardOne = {cardOne}
-                scoreTwo.value = scoreTwo.value + valueCard;
 
-                // const valueCardTwo = parseInt(translateCards(cardTwo.value.value));
-                // scoreTwo.value = scoreTwo.value + valueCardTwo;
-                // console.log(scoreTwo.value, 'scoreTwo')
-                // console.log(startPlayerTwo.value)
-
-                
+                scoreTwo.value = scoreTwo.value + valueCard;       
                 }
-
-            // cardOne.value = cards[0];
-
-            // const valueCardOne = parseInt(translateCards(cardOne.value.value));
-            // scoreOne.value = scoreOne.value + valueCardOne;
-            // console.log(scoreOne.value)
-
-
-            // cardTwo.value = cards[0]
-            //     const valueCardTwo = parseInt(translateCards(cardTwo.value.value));
-            //     scoreTwo.value = scoreTwo.value + valueCardTwo;
-            //     console.log(scoreTwo.value, 'scoreTwo')
-            //     console.log(startPlayerTwo.value)
-
-            // } else if(startPlayerTwo.value = true){
-            //     cardTwo.value = cards[0];
-            // }
-                        
-            // if(startPlayerTwo.value = true){
-            //     cardTwo.value = cards[0]
-            //     console.log(startPlayerTwo.value)
-            // }
-
-            // cardOne.value = cards[0];
-            // console.log(remaining)
-            
 
             winConditions()
         }
+
+        async function getCardPlayerOne(){
+            startPlayerOne.value = true;      
+            getCard();
+            }
+
+
+    let i = 0;                 
+
+        async function myLoop() {
+            // startPlayerOne.value = false;
+            startPlayerTwo.value = true;         
+        setTimeout(function() {   
+            console.log('hello');
+
+            i++;
+            console.log(i)   
+            if (i < 10) {           
+            myLoop();
+            getCard();
+            //getCards2(); 
+
+            }                      
+        }, 1000)}
 
         function winConditions(){
             if(scoreOne.value > 21) {
@@ -211,129 +200,6 @@ export default {
             }
         }
 
-        async function getCardPlayerOne(){
-            startPlayerOne.value = true;      
-            getCard();
-            // const {cards} = data;
-            
-            // cardOne.value = cards[0];
-
-            // const valueCardOne = parseInt(translateCards(cardOne.value.value));
-            // console.log(cardOne.value.value)
-            // scoreOne.value = scoreOne.value + valueCardOne;
-            // console.log(scoreOne.value)
-        }
-
-        // async function getCardsTwo(){
-        //     startPlayerTwo.value = true;
-        //     getCard();
-        // }
-
-        // async function getCard(){
-        //     startPlayerOne.value = true;
-        //     const {data} = await axios.get(
-        //         'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
-        //     );
-        //     const remaining = data.remaining
-        //     const { cards } = data;
-        //     cardOne.value = cards[0];
-        //     console.log(remaining)
-        //     const valueCard = parseInt(translateCards(cardOne.value.value));
-        //     scoreOne.value = scoreOne.value + valueCard;
-        //     console.log(scoreOne.value)
-
-        //     if(scoreOne.value > 21) {
-        //         setTimeout(() => {
-        //             swal("Dealer wins!")
-        //             gameOver.value = true;
-        //             winsPlayerTwo.value = winsPlayerTwo.value + 1;
-        //             console.log(winsPlayerTwo)
-        //         }, 500);
-        //     }
-        // }
-
-        // async function playerTwo(){
-        //     startPlayerTwo.value = true;
-        // }
-
-        // for(let i = 0; i < 4; i++){
-        //     getCards2()
-        //     console.log(scoreTwo.value)
-        //     console.log(i)
-
-        // }
-        // for(let i = 0; i < 4; setTimeout(() =>{i++},500))
-        // {console.log(i)}
-
-
-let i = 0;                 
-
- async function myLoop() {
-    // startPlayerOne.value = false;
-    startPlayerTwo.value = true;         
-  setTimeout(function() {   
-    console.log('hello');
-
-    i++;
-    console.log(i)   
-    if (i < 10) {           
-    myLoop();
-    getCard();
-    //getCards2(); 
-
-    }                      
-  }, 1000)
-}
-
-// myLoop(); 
-
-        async function getCards2(){
-            startPlayerTwo.value = true;
-
-        // setTimeout(() => {},500)
-        //     // for(let i = 0; i < 4; i++){
-        //     const {data} = await axios.get(
-        //         'https://deckofcardsapi.com/api/deck/' + deckID.value + '/draw/?count=1'
-        //     );
-
-
-        //     const remaining = data.remaining
-        //     const { cards } = data;
-        //     cardTwo.value = cards[0];
-        //     console.log(remaining)
-        //     const valueCard = parseInt(translateCards(cardTwo.value.value));
-        //     scoreTwo.value = scoreTwo.value + valueCard;
-        //     console.log(scoreTwo.value)
-
-        //getCard();
-
-            // if(scoreTwo.value > 21) {
-            //     setTimeout(()=> {
-            //         swal("Player wins!")
-            //         gameOver.value = true;
-            //         winsPlayerOne.value = winsPlayerOne.value + 1;
-            //         i = 11;
-            //         }, 500);
-            // }
-
-            // if(scoreTwo.value > scoreOne.value && scoreTwo.value < 22) {
-            //     setTimeout(() => {
-            //         swal("Dealer wins!")
-            //         gameOver.value = true;
-            //         winsPlayerTwo.value = winsPlayerTwo.value + 1;
-            //         i = 11;
-            //     }, 500);
-            // }
-
-            // if(scoreTwo.value > 15 && scoreTwo.value == scoreOne.value) {
-            //     setTimeout(() => {
-            //         swal("Draw!")
-            //         gameOver.value = true;
-            //         i = 11;
-            //     }, 500);
-            // }
-        }
-
         return { 
             // getCard, 
             cardOne, 
@@ -342,7 +208,7 @@ let i = 0;
             scoreOne,
             cardTwo,
             scoreTwo,
-            getCards2,
+            //getCards2,
             startPlayerOne,
             startPlayerTwo,
             // playerTwo,
